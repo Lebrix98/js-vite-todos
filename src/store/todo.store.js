@@ -7,40 +7,30 @@ export const Filters = {
 };
 
 const state = {
-  todos: [
-    new Todo("Piedra del Alma"),
-    new Todo("Piedra de la Mente"),
-    new Todo("Piedra del Tiempo"),
-    new Todo("Piedra del Espacio"),
-    new Todo("Piedra del Poder"),
-    new Todo("Piedra del Realidad"),
-  ],
+  todos: [],
   filter: Filters.All,
 };
 
 const initStore = () => {
-
   loadStore();
 
   console.log("InitStore");
 };
 
 const loadStore = () => {
-  
-  if( !localStorage.getItem('state') ) return;
+  if (!localStorage.getItem("state")) return;
 
-  const { todos = [], filter = Filters.All } = JSON.parse( localStorage.getItem('state') )
+  const { todos = [], filter = Filters.All } = JSON.parse(
+    localStorage.getItem("state")
+  );
 
   state.todos = todos;
   state.filter = filter;
-
 };
 
 const saveStateToLocalStorage = () => {
-
-  localStorage.setItem('state', JSON.stringify(state) )
-
-}
+  localStorage.setItem("state", JSON.stringify(state));
+};
 
 const getTodos = (filter = Filters.All) => {
   switch (filter) {
